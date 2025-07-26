@@ -1,0 +1,102 @@
+/* Import font modern dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Variabel warna untuk TEMA TELEGRAM */
+:root {
+    /* --- Mode Gelap (Default) --- */
+    --bg-color-dark: #17212b;
+    --surface-color-dark: #243447;
+    --primary-accent-dark: #3390ec;
+    --text-primary-dark: #ffffff;
+    --text-secondary-dark: #8c9ba8;
+    --ai-msg-bg-dark: #232f3d;
+    --user-msg-bg-dark: #3390ec;
+    --shadow-color-dark: rgba(0, 0, 0, 0.2);
+
+    /* --- Mode Terang --- */
+    --bg-color-light: #F0F4F7;
+    --surface-color-light: #FFFFFF;
+    --primary-accent-light: #0088cc;
+    --text-primary-light: #000000;
+    --text-secondary-light: #6E6E73;
+    --ai-msg-bg-light: #E5E5EA;
+    --user-msg-bg-light: #0088cc;
+    --shadow-color-light: rgba(0, 0, 0, 0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+body.dark-mode { background-color: var(--bg-color-dark); color: var(--text-primary-dark); }
+body.light-mode { background-color: var(--bg-color-light); color: var(--text-primary-light); }
+.chat-container { width: 100%; max-width: 700px; height: 85vh; display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; transition: background-color 0.3s, box-shadow 0.3s; border: 1px solid; }
+body.dark-mode .chat-container { background-color: var(--surface-color-dark); border-color: rgba(255, 255, 255, 0.1); box-shadow: 0 15px 40px var(--shadow-color-dark); }
+body.light-mode .chat-container { background-color: var(--surface-color-light); border-color: rgba(0, 0, 0, 0.1); box-shadow: 0 15px 40px var(--shadow-color-light); }
+header { display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; flex-shrink: 0; }
+header h1 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.5rem; margin: 0; }
+header p { font-size: 0.8rem; margin-top: 2px; transition: color 0.3s; }
+body.dark-mode header p { color: var(--text-secondary-dark); }
+body.light-mode header p { color: var(--text-secondary-light); }
+
+/* ===== PERUBAHAN STYLE DI SINI ===== */
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.icon-btn {
+    background: none;
+    border: none;
+    color: inherit; /* Mengambil warna dari parent */
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem; /* Ukuran ikon disamakan */
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; /* Menghilangkan garis bawah link */
+    opacity: 0.7;
+}
+.icon-btn:hover {
+    opacity: 1;
+    color: var(--primary-accent-dark);
+    transform: scale(1.1);
+}
+body.light-mode .icon-btn:hover {
+    color: var(--primary-accent-light);
+}
+/* ===== AKHIR PERUBAHAN STYLE ===== */
+
+.chat-window { flex-grow: 1; padding: 10px 25px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+.message { max-width: 85%; padding: 12px 18px; border-radius: 20px; line-height: 1.6; word-wrap: break-word; }
+.ai-message { align-self: flex-start; border-bottom-left-radius: 5px; }
+body.dark-mode .ai-message { background-color: var(--ai-msg-bg-dark); }
+body.light-mode .ai-message { background-color: var(--ai-msg-bg-light); }
+.user-message { align-self: flex-end; border-bottom-right-radius: 5px; color: #fff; }
+body.dark-mode .user-message { background-color: var(--user-msg-bg-dark); }
+body.light-mode .user-message { background-color: var(--user-msg-bg-light); }
+.input-area { display: flex; align-items: center; padding: 15px 25px; gap: 15px; }
+#user-input { flex-grow: 1; border: none; border-radius: 20px; padding: 12px 18px; font-size: 1rem; font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
+body.dark-mode #user-input { background-color: var(--ai-msg-bg-dark); color: var(--text-primary-dark); }
+body.light-mode #user-input { background-color: var(--ai-msg-bg-light); color: var(--text-primary-light); }
+#user-input:focus { outline: none; }
+#send-btn { background-color: var(--primary-accent-dark); color: white; border: none; font-size: 1rem; cursor: pointer; border-radius: 50%; width: 48px; height: 48px; flex-shrink: 0; transition: background-color 0.3s, transform 0.2s; }
+#send-btn:hover { transform: scale(1.05); }
+body.light-mode #send-btn { background-color: var(--primary-accent-light); }
+footer { text-align: center; margin-top: 20px; font-size: 0.8rem; transition: color 0.3s; }
+body.dark-mode footer { color: var(--text-secondary-dark); }
+body.light-mode footer { color: var(--text-secondary-light); }
+.chat-window::-webkit-scrollbar { width: 6px; }
+.chat-window::-webkit-scrollbar-track { background: transparent; }
+.chat-window::-webkit-scrollbar-thumb { background-color: #888; border-radius: 10px; }
+.chat-window::-webkit-scrollbar-thumb:hover { background-color: #555; }
